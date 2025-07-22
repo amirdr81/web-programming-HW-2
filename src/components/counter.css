@@ -14,3 +14,64 @@
   justify-content: center;
   font-size: 2rem;
 }
+
+.counter-shapes-row {
+  display: flex;
+  flex-direction: row;
+  gap: 100px;
+  align-items: center;
+  justify-content: center;
+}
+
+.counter-shape-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.counter-number {
+  font-size: 1.2rem;
+  color: #ffffff;
+  margin-top: 4px;
+  letter-spacing: 1px;
+  direction: ltr;
+}
+
+.shape {
+  background: #fff;
+}
+
+.shape-circle {
+  width: 64px;
+  height: 64px;
+  border-radius: 75%;
+}
+
+.shape-square {
+  width: 64px;
+  height: 64px;
+}
+
+.shape-triangle {
+  width: 0;
+  height: 0;
+  border-left: 32px solid transparent;
+  border-right: 32px solid transparent;
+  border-bottom: 64px solid #fff;
+  background: transparent;
+}
+
+.shape-ellipse {
+  width: 80px;
+  height: 44px;
+  border-radius: 75%;
+  background: #fff;
+}
+
+.shape-parallelogram {
+  width: 76px;
+  height: 44px;
+  background: #fff;
+  transform: skew(-20deg);
+}
