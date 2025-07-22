@@ -16,6 +16,21 @@ function App() {
     parallelogram: shapes.filter(s => s.type === 'parallelogram').length,
   };
 
+  const exportShapesAsJson = () => {
+    const jsonData = JSON.stringify(shapes, null, 2);
+    const blob = new Blob([jsonData], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+
+    // ایجاد لینک برای دانلود
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = fileName;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  };
+
   const handleDragStart = (e, type) => {
     e.dataTransfer.setData("type", type);
   };
@@ -32,7 +47,7 @@ function App() {
 
   return (
     <div>
-      <Header fileName={fileName} setFileName={setFileName}/>
+      <Header fileName={fileName} setFileName={setFileName} onExportShapes={exportShapesAsJson}/>
       <Counter counts={shapeCounts}/>
       <Slidebar onDragStart={handleDragStart} />
       <Canvas

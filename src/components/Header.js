@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./Header.css";
 
-function Header({ fileName, setFileName }) {
+function Header({ fileName, setFileName, onExportShapes}) {
   const [isEditing, setIsEditing] = useState(false);
   const inputRef = useRef();
 
@@ -41,7 +41,7 @@ function Header({ fileName, setFileName }) {
         )}
       </div>
       <div className="btn-group">
-        <button className="btn">Export</button>
+        <button className="btn" onClick={onExportShapes}>Export</button>
         <button className="btn">Import</button>
       </div>
     </div>
