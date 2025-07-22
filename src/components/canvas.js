@@ -1,7 +1,7 @@
 import React from "react";
 import "./canvas.css";
 
-function Canvas({ shapes, onDropShape }) {
+function Canvas({ shapes, onDropShape, onRemoveShape}) {
   const handleDrop = (e) => {
     e.preventDefault();
     const type = e.dataTransfer.getData("type");
@@ -21,17 +21,14 @@ function Canvas({ shapes, onDropShape }) {
       onDrop={handleDrop}
       onDragOver={handleDragOver}
     >
-      {shapes.map((shape, i) => (
-        <div
-          key={i}
-          className={`canvas-shape shape-${shape.type}`}
-          style={{
-            position: "absolute",
-            left: shape.x,
-            top: shape.y
-          }}
-        />
-      ))}
+      {shapes.map(shape => (
+      <div
+        key={shape.id}
+        className={`canvas-shape shape-${shape.type}`}
+        style={{ position: "absolute", left: shape.x, top: shape.y }}
+        onDoubleClick={() => onRemoveShape(shape.id)}
+      />
+    ))}
     </div>
   );
 }

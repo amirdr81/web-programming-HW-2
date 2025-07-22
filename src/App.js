@@ -15,13 +15,18 @@ function App() {
     parallelogram: shapes.filter(s => s.type === 'parallelogram').length,
   };
 
-
   const handleDragStart = (e, type) => {
     e.dataTransfer.setData("type", type);
   };
 
   const handleDropShape = (type, x, y) => {
-    setShapes((prev) => [...prev, { type, x, y }]);
+    setShapes(
+      [...shapes, { id: Date.now()+Math.random(), type, x, y }]
+    );
+  };
+
+  const handleRemoveShape = (id) => {
+    setShapes(shapes.filter(shape => shape.id !== id));
   };
 
   return (
@@ -32,6 +37,7 @@ function App() {
       <Canvas
         onDropShape={handleDropShape}
         shapes={shapes}
+        onRemoveShape={handleRemoveShape}
       />
     </div>
   );
