@@ -7,6 +7,15 @@ import Counter from "./components/counter";
 function App() {
   const [shapes, setShapes] = useState([]);
 
+  const shapeCounts = {
+    circle: shapes.filter(s => s.type === 'circle').length,
+    square: shapes.filter(s => s.type === 'square').length,
+    triangle: shapes.filter(s => s.type === 'triangle').length,
+    ellipse: shapes.filter(s => s.type === 'ellipse').length,
+    parallelogram: shapes.filter(s => s.type === 'parallelogram').length,
+  };
+
+
   const handleDragStart = (e, type) => {
     e.dataTransfer.setData("type", type);
   };
@@ -18,7 +27,7 @@ function App() {
   return (
     <div>
       <Header />
-      <Counter />
+      <Counter counts={shapeCounts}/>
       <Slidebar onDragStart={handleDragStart} />
       <Canvas
         onDropShape={handleDropShape}
