@@ -4,13 +4,94 @@
   top: 120px;
   right: 10px;
   bottom: 10px;
-  background: #accb13;
+  background: #650094;
   box-sizing: border-box;
   border-radius: 20px;
   box-shadow: 0 2px 8px #0003;
-  
-  display: flex;
+
+  padding: 15px;
   align-items: center;
   justify-content: center;
   font-size: 2rem;
+}
+
+.shape-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  margin-top: 0;
+}
+
+.shape-circle {
+  width: 85px;
+  height: 85px;
+  border-radius: 75%;
+  background: #fff;
+  transition: 0.2s;
+}
+
+.shape-circle:hover {
+  width: 90px;
+  height: 90px;
+}
+
+.shape-square {
+  width: 85px;
+  height: 85px;
+  background: #fff;
+  border-radius: 8px;
+  transition: 0.2s;
+}
+
+.shape-square:hover {
+  width: 90px;
+  height: 90px;
+}
+
+.shape-triangle {
+  width: 0;
+  height: 0;
+  border-left: 40px solid transparent;
+  border-right: 40px solid transparent;
+  border-bottom: 80px solid #fff;
+  background: transparent;
+  transition: 0.2s;
+}
+
+.shape-triangle:hover {
+  border-left: 45px solid transparent;
+  border-right: 45px solid transparent;
+  border-bottom: 85px solid #fff;
+}
+
+.shape-ellipse {
+  width: 100px;
+  height: 60px;
+  border-radius: 75%;
+  background: #fff;
+  transition: 0.2s;
+}
+
+.shape-ellipse:hover {
+  width: 105px;
+  height: 65px;
+}
+
+.shape-parallelogram {
+  width: 100px;
+  height: 60px;
+  background: #fff;
+  transform: skew(-20deg);
+  transition: 0.2s;
+}
+
+.shape-parallelogram:hover {
+  width: 105px;
+  height: 65px;
+}
+
+.title {
+  font-size: 3rem;
+  color: #fff;
 }
