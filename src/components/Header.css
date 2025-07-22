@@ -40,8 +40,18 @@
 }
 
 .header-title {
-  font-size: 2rem;
-  color: #ffffff;
+  font-weight: bold;
+  font-size: 3rem;
+  padding: 3rem;
+  color: #f8cfff;
+}
 
-  font-size: 2rem;
+.file-name-input {
+  font-size: 3rem;
+  outline: none;
+  border-radius: 20px;
+  color: #590064;
+  background: #fff;
+  width: 300px;
+  text-align: center;
 }

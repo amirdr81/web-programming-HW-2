@@ -19,10 +19,11 @@ function Header({ fileName, setFileName }) {
 
   return (
     <div className="header-box">
-      <div className="file-name-header">
+      <div className="header-title">
         {isEditing ? (
           <input
             ref={inputRef}
+            className="file-name-input"
             type="text"
             value={fileName}
             onChange={(e) => setFileName(e.target.value)}
@@ -31,7 +32,7 @@ function Header({ fileName, setFileName }) {
           />
         ) : (
           <span
-            className="header-file-name"
+            className="header_title"
             onClick={() => setIsEditing(true)}
             title="برای ویرایش کلیک کنید"
           >
