@@ -6,6 +6,7 @@ import Counter from "./components/counter";
 
 function App() {
   const [shapes, setShapes] = useState([]);
+  const [fileName, setFileName] = useState("Untitled");
 
   const shapeCounts = {
     circle: shapes.filter(s => s.type === 'circle').length,
@@ -31,7 +32,7 @@ function App() {
 
   return (
     <div>
-      <Header />
+      <Header fileName={fileName} setFileName={setFileName}/>
       <Counter counts={shapeCounts}/>
       <Slidebar onDragStart={handleDragStart} />
       <Canvas
