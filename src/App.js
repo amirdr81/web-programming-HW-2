@@ -21,7 +21,6 @@ function App() {
     const blob = new Blob([jsonData], { type: "application/json" });
     const url = URL.createObjectURL(blob);
 
-    // ایجاد لینک برای دانلود
     const link = document.createElement("a");
     link.href = url;
     link.download = fileName;
@@ -29,6 +28,28 @@ function App() {
     link.click();
     document.body.removeChild(link);
     URL.revokeObjectURL(url);
+  };
+
+  const handleImportShapes = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      try {
+        const data = JSON.parse(event.target.result);
+        if (Array.isArray(data)) {
+          setFileName(file.name.replace('.json', ''))
+          setShapes(data);
+        } else {
+          alert("فرمت فایل معتبر نیست!");
+        }
+      } catch {
+        alert("مشکل در خواندن فایل یا فرمت داده!");
+      }
+    };
+
+    reader.readAsText(file);
   };
 
   const handleDragStart = (e, type) => {
@@ -47,7 +68,7 @@ function App() {
 
   return (
     <div>
-      <Header fileName={fileName} setFileName={setFileName} onExportShapes={exportShapesAsJson}/>
+      <Header fileName={fileName} setFileName={setFileName} onExportShapes={exportShapesAsJson} onImportShapes={handleImportShapes}/>
       <Counter counts={shapeCounts}/>
       <Slidebar onDragStart={handleDragStart} />
       <Canvas

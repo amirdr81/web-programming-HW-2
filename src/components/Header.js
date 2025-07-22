@@ -1,9 +1,15 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./Header.css";
 
-function Header({ fileName, setFileName, onExportShapes}) {
+function Header({ fileName, setFileName, onExportShapes, onImportShapes}) {
   const [isEditing, setIsEditing] = useState(false);
   const inputRef = useRef();
+
+  const fileInputRef = useRef();
+
+  const handleImportBtnClick = () => {
+    fileInputRef.current && fileInputRef.current.click();
+  };
 
   useEffect(() => {
     if (isEditing && inputRef.current) {
@@ -42,7 +48,14 @@ function Header({ fileName, setFileName, onExportShapes}) {
       </div>
       <div className="btn-group">
         <button className="btn" onClick={onExportShapes}>Export</button>
-        <button className="btn">Import</button>
+        <button className="btn" onClick={handleImportBtnClick}>Import</button>
+      <input
+        type="file"
+        accept="application/json"
+        ref={fileInputRef}
+        style={{ display: "none" }}
+        onChange={onImportShapes}
+      />
       </div>
     </div>
   );
